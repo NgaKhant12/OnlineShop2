@@ -1,0 +1,92 @@
+{% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+<link rel="stylesheet" href="{% static '/bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static '/fontawesome/css/all.min.css' %}">
+<style>
+
+.text-white{
+    color: white;
+}
+
+
+
+
+.nav-link{
+    color: white;
+    font-size: 20px;
+}
+@media(max-width:992px){
+    .nav-link{
+        color: white;
+        font-size: 18px;
+    }
+}
+.nav-link:hover{
+    font-weight: 500;
+    color: #ed6161;
+    transition: 0.5s ease-in-out;  
+}
+
+.nav-link:focus{
+    color:#ed6161
+}
+
+
+
+
+
+.btn-outline-success-custom {
+    --bs-btn-color: white;
+    --bs-btn-border-color: rgb(94, 154, 144);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: rgb(94, 154, 144);
+    --bs-btn-hover-border-color: rgb(94, 154, 144);
+    --bs-btn-focus-shadow-rgb: 25, 135, 84;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: rgb(94, 154, 144);
+    --bs-btn-active-border-color: rgb(94, 154, 144);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: rgb(94, 154, 144);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: rgb(94, 154, 144);
+    --bs-gradient: none;
+  }
+
+</style>
+
+<!-- Navbar Starts -->
+    <nav class="navbar navbar-expand-md navbar-light bg-transparent shadow">
+        <div class="container-fluid">
+          <a class="navbar-brand rounded-3" href="#">
+            <img src="{% static '/images/Logo1.png' %}"  height="60px">
+        </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="margin-right: 300px;">
+              <li class="nav-item mx-2 fw-normal ">
+                <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item mx-2 fw-normal">
+                <a class="nav-link" href="{% url 'categories' %}">Category</a>
+              </li>
+              <li class="nav-item mx-2 fw-normal">
+                <a class="nav-link" href="{% url 'products' %}">Product</a>
+              </li>
+              <li class="nav-item mx-2 fw-normal">
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar Ends -->
+    
+      <script src="{% static '/bootstrap-5.3.3-dist/js/bootstrap.min.js' %}">
+
+      </script>

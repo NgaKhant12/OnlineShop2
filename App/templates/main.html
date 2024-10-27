@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/fontawesome/css/all.min.css' %}">
+
+</head>
+<body>
+
+    <!-- Navbar Starts -->
+    <nav class="navbar navbar-expand-md navbar-light bg-transparent  shadow">
+      <div class="container-fluid">
+        <a class="navbar-brand rounded-3" href="{% url 'home' %}">
+          <img src="{% static '/images/Logo1.png' %}"  height="60px">
+      </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item mx-2 fw-normal ">
+              <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item mx-2 fw-normal">
+              <a class="nav-link" href="{% url 'categories' %}">Category</a>
+            </li>
+            <li class="nav-item mx-2 fw-normal">
+              <a class="nav-link" href="{% url 'products' %}">Product</a>
+            </li>
+            <li class="nav-item mx-2 fw-normal">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+          </ul>
+          <div class="d-none d-md-block mx-3">
+            <form class="d-flex">
+              <input class="form-control me-2 text-muted search" type="search" placeholder="Search . . . " aria-label="Search">
+              <button class="btn btn-outline-primary search-btn" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar Ends -->
+    <!-- Mobile View Search Bar S-->
+
+    <div class="container-fluid product-search d-md-none d-sm-block p-3">
+      <form class="d-flex w-60 p-2">
+        <input class="form-control me-2 text-muted search" type="search" placeholder="Search . . . " aria-label="Search">
+        <button class="btn btn-outline-primary search-btn" type="submit">Search</button>
+      </form>
+    </div>
+    <!-- Mobile View Search Bar E-->
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <!-- Icons Starts -->
+   <footer>
+    <div class="container mb-3">
+      <div class="row">
+        <div class="col text-center ">
+          <div class="mb-2 fs-1">
+            <a href="#" class="icons-text-hover-color "><i class="fab fa-facebook mx-2 "></i></a>
+          <a href="#" class="icons-text-hover-color "><i class="fab fa-twitter mx-3"></i></a>
+          <a href="#" class="icons-text-hover-color "><i class="fab fa-instagram mx-2"></i></a>
+          </div>
+          <div class="p-2 fs-5 text-white">
+            <p>&copy; Copyright By </p>
+            <p>Nga Khant ( Founder of Tech Titan ) &trade;</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+   </footer>
+
+   <!-- Icons Ends -->
+
+    
+
+
+    <script src="{% static '/bootstrap-5.3.3-dist/js/bootstrap.min.js' %}">
+
+    </script>
+</body>
+</html>

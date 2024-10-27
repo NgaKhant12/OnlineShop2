@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/fontawesome/css/all.min.css' %}">
+
+
+    <title>Contact</title>
+</head>
+<body>
+    
+    {% include "navbar.html" %}
+
+    <div class="container">
+        <h2 class="my-5 text-center text-white">Contact</h2>
+        <div class="sub-container ">
+            <div class="row g-2">
+                <div class="col-10 col-md-6 mx-auto mb-3">
+                   <div class="card card-body rounded-3 shadow-lg bg-transparent p-3 pt-4">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3 form-floating">
+                            <input class="form-control" type="text" name="name" id="name" placeholder="Name">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone">
+                            <label for="phone">Phone</label>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input class="form-control" type="email" name="email" id="email" placeholder="Email">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="mb-3 text-center">
+                            <button class="btn btn-outline-success-custom btn-lg w-75">Contact</button>
+                        </div>
+                    </form>
+                   </div>
+                    
+                </div>
+                <div class="col-10 col-md-6 mx-auto">
+                    <div class="card card-body rounded-3 shadow-lg bg-transparent p-3 pt-4">
+                        <a href=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static '/bootstrap-5.3.3-dist/js/bootstrap.min.js' %}"></script>
+    
+</body>
+</html>
+
+
+
+

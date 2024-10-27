@@ -1,0 +1,55 @@
+{% extends "main.html" %}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+  <title>Products</title>
+</head>
+<body>
+
+  <div class="container mt-2">
+    <h2 class="my-5 text-center text-white">Products</h2>
+    <div class="row g-2 mb-3">
+      {% for product in products %}
+      
+      <div class="col-md-6 mb-2">
+        <div class="shadow bg-body rounded-4 p-2">
+          <div class="d-flex">
+            <img src="{{product.image.url}}"  class="rounded-4 mt-2" alt=".." style="height:50%; width:20%;">
+            <div class="p-1 mx-2">
+              <h3>{{product.name}} </h3>
+              <p class="m-0">$ {{product.price}} </p>
+              <p class="text-muted">
+                Made with Italian Sauce, Chicken and Organice Vegetables.
+              </p>
+              <a href="{% url 'order' product.id %}" class="btn btn-outline-order" >Order Now</a>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {% endfor %}
+
+    
+      
+    </div>
+  </div>
+
+  
+  
+  
+</body>
+</html>
+
+{% endblock content %}
+
+

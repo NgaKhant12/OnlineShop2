@@ -1,0 +1,65 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+    <title>Sure Order</title>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-white text-center my-4">Order Form</h2>
+        <div class="row g-2 justify-content-center">
+            <div class="col-10 col-md-9 mx-auto">
+
+                    
+                  {% for orde in order %}
+                    {{orde}}
+                    <hr>
+                  {% endfor %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit" value="Order">
+                </form>
+                
+                
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+      
+      document.getElementById("quantity").onblur = function (){
+        var price = parseFloat(document.getElementById("price").textContent)
+        var quantity = parseFloat( document.getElementById("quantity").value) 
+        
+        if ((quantity > 20) || (quantity < 1)){
+          alert("Maxium order of this product is under 20 and above 1! ")
+          document.getElementById("quantity").value = 1
+          return false;
+        }
+        else{
+          let result = quantity * price
+          document.getElementById("display").style.display = "inline";
+          document.getElementById("display").textContent = `Cost : $ ` + result.toFixed(3)
+        }
+        
+      }
+        
+    </script>
+</body>
+</html>
+
+{% endblock content %}
+
+

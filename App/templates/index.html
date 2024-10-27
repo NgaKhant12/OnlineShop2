@@ -1,0 +1,158 @@
+{% extends "main.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    
+  .btn-outline-darkk {
+    border-width: 2px;
+    --bs-btn-font-weight:600;
+    --bs-btn-color: #FF8c8c;
+    --bs-btn-bg: white;
+    --bs-btn-border-color: #FF8c8c;
+    --bs-btn-border-radius: .5rem;
+    --bs-btn-hover-color: white;
+    --bs-btn-hover-bg: #FF8c8c;
+    --bs-btn-hover-border-color: #ff8c8c;
+    --bs-btn-focus-shadow-rgb: rgb(112, 139, 114);
+    --bs-btn-active-color:#white;
+    --bs-btn-active-bg:#FF8c8c;
+    --bs-btn-active-border-color: #ff8c8c;
+}
+.text-darkk{
+  color: #fd8787;
+}
+  </style>
+</head>
+<body>
+
+  
+
+   <!-- Carousel Strats -->
+
+   
+
+   <div class="container p-2">
+    <br>
+    <h2 class="text-center text-white my-3">Promotions</h2>
+    <div class="row">
+      <div class="col-md-10 col-lg-7 mx-auto p-3">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+          <!-- <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" ></button>
+            {% for product in products %}
+            <div class="d-none" id="count">{{count}}</div>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to ="{{count}}" id="carousel_indicator"></button>
+            {% endfor %}
+          </div> -->
+          <div class="carousel-inner">
+            {% for product in promotion_products %}
+            <div class="carousel-item card p-2 rounded-4"  title="{{product.active}}" id="active">
+              <img src="{{product.image.url}}" class="d-block w-100 rounded-4" style="border: 4px solid #ff8c8c;" alt="...">
+              <div class="carousel-caption d-md-block">
+                <h3 class="text-darkk">{{product.name}} </h3>
+                <a href="{% url 'promo_order' product.id %}" class="btn btn-outline-darkk">Order Now</a>
+              </div>
+            </div>
+            {% endfor %}
+
+            
+          </div>
+          <a class="carousel-control-prev text-dark" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+            </svg>
+            <span class="visually-hidden">Previous</span>
+          </a>
+          <a class="carousel-control-next text-dark" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="30" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+            </svg>
+            <span class="visually-hidden">Next</span>
+          </a>
+        </div> 
+      </div>
+    </div>
+    <hr>
+   </div>
+  <!-- Carousel Ends -->
+
+   <!-- Explore Product Strats -->
+   <div class="container">
+      <h2 class="text-center text-white my-2 mb-4">Explore Products</h2>
+      <div class="row g-2">
+        {% for category in categories %}
+
+        <div class="col-8 col-md-6 col-lg-4 mx-auto">
+          <a href="{% url 'products_of_category' category.id %}" class="text-decoration-none text-dark">
+            <div class="card card-body p-2 rounded-4 shadow bg-pale">
+              <img src="{% static '/images/lipstick.svg' %}" alt="" class="rounded-4 mx-auto mt-2" style="width: 85%;">
+              <h4 class="card-title mt-2 mx-3 text-center">{{category.name}} </h4>
+            </div>
+          </a>
+        </div>
+        
+        {% endfor %}
+        
+      </div>
+    <hr>
+  </div>
+   <!-- Explore Product End -->
+
+
+   <!-- Product Menu Starts -->
+   <div class="container p-2">
+    <h2 class="text-center text-white my-4 mb-5">Products Menu</h2>
+    <div class="row g-2 mb-3">
+      {% for product in products %}
+      <div class="col-md-6">
+        <div class="shadow bg-body rounded-4 p-2">
+          <div class="d-flex">
+            <img src="{{product.image.url}}"  class="rounded-4 mt-2" alt=".." style="height: 70%; width:20%;">
+            <div class="p-1 mx-2">
+              <h3>{{product.name}} </h3>
+              <p class="m-0">$ <span id="price">{{product.price}}</span></p>
+              <p class="text-muted">
+                Made with Italian Sauce, Chicken and Organice Vegetables.
+              </p>
+              <a href="{% url 'create_customer' product.id %}" class="btn btn-outline-darkk">Order Now</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+    <div class="row my-2 mb-1">
+      <div class="col text-center">
+        <a href="{% url 'products' %}" class="text-decoration-none fs-5 seeallproducts">See all products</a>
+
+      </div>
+    </div>
+    <hr>
+   </div>
+ 
+    <!-- Product Menu Ends -->
+
+
+   <script>
+    
+    var obj = document.getElementById("active")
+    if (obj.title === "active"){
+      obj.classList.add("active")
+    }
+   </script>
+
+</body>
+</html>
+
+
+{% endblock content %}

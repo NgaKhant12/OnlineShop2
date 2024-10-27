@@ -1,0 +1,114 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+    <title>Customer</title>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-white text-center my-4">Customer Form</h2>
+        <div class="row g-2 justify-content-center">
+            <div class="col-10 col-md-9 mx-auto">
+                <div class="card card-body shadow bg-transparent rounded-4 p-2">
+                 
+                      <fieldset class="border border-2 rounded-3 p-3 mb-2 d-none" >
+                        <legend class="text-white float-none w-auto p-2">Selected Product</legend>
+                        <div class="d-flex mb-3 ">
+                          <img src="{{product.image.url}}"  class="rounded-4 mt-2 w-25 h-25" alt=".." style="object-fit:cover;">
+                          <div class="p-1 mx-2  w-75">
+                            <h3>{{product.name}} </h3>
+                            <p class="m-0">$ <span id="price">{{product.price}}</span> </p>
+                            <p class="text-muted">
+                              
+                            </p>
+                            <input type="number" name="quantity" min="1" max="20" class="form-control float-start w-auto" value="1" id="quantity" >
+                            <div id="display" class=" w-auto float-end h5 bg-body rounded-3 p-2" style="display: none;"></div>
+                          
+                          </div>
+                        </div>
+                      </fieldset>
+
+                
+                <!-- <fieldset class="border border-2 rounded-3 p-2 mb-2" >
+                  <legend class="text-white float-none w-auto p-2">To Order</legend>
+
+                  <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3 form-floating w-75 mx-auto">
+                        <input required class="form-control" type="text" name="name" id="name" placeholder="Name">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="mb-3 form-floating w-75  mx-auto">
+                        <input required class="form-control" type="text" name="phone" id="phone" placeholder="Phone">
+                        <label for="phone">Phone</label>
+                    </div>
+                    <div class="mb-3 form-floating w-75  mx-auto">
+                        <input required class="form-control" type="email" name="email" id="email" placeholder="Email">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="mb-3 w-75  mx-auto">
+                      <textarea name="address" id="address" placeholder="Your Address" class="form-control"></textarea>
+                      <div class="form-label text-muted">Enter your address completely . . . </div>
+                  </div>
+                    <div class="mb-3 text-center w-75  mx-auto">
+                        <button class="btn btn-outline-success-custom btn-lg w-75">Order</button>
+                    </div>
+                  </form>
+                  </fieldset> -->
+
+                      <fieldset class="border border-2 rounded-3 p-2 mb-2" >
+                        <legend class="text-white float-none w-auto p-2">To Order</legend>
+                        <form action="" method="post">
+                          {% csrf_token %}
+                            {{form.as_p}}
+                          <input type="submit" value="Create" >
+                        </form>
+                            
+                      </fieldset>
+                    
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+      
+      document.getElementById("quantity").onblur = function (){
+        var price = parseFloat(document.getElementById("price").textContent)
+        var quantity = parseFloat( document.getElementById("quantity").value) 
+        
+        if ((quantity > 20) || (quantity < 1)){
+          alert("Maxium order of this product is under 20 and above 1! ")
+          document.getElementById("quantity").value = 1
+          return false;
+        }
+        else{
+          let result = quantity * price
+          document.getElementById("display").style.display = "inline";
+          document.getElementById("display").textContent = `Cost : $ ` + result.toFixed(3)
+        }
+        
+      }
+
+      
+
+        
+    </script>
+</body>
+</html>
+
+{% endblock content %}
+
+

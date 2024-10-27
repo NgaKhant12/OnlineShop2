@@ -1,0 +1,64 @@
+{% extends "main.html" %}
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {% load static %} 
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category</title>
+  
+  
+  
+</head>
+<body>
+
+  
+
+
+   <!-- Categories Starts -->
+
+    <div class="container mt-4">
+        <h2 class="text-center text-white my-5 d-none d-md-block ">Categories</h2>
+        <div class="row g-3">
+          {% for category in categories %}
+          <div class="col-10 col-md-6 col-lg-4 mx-auto">
+            <a href="{% url 'products_of_category' category.id %}" class="text-decoration-none text-dark">
+              <div class="card card-body p-2 rounded-4 shadow bg-light shadow bg-pale">
+                <img src="{% static '/images/lipstick.svg' %}" alt="" class="rounded-4 mx-auto mt-2 category-images">
+                <h4 class="card-title mt-2 mx-3 text-center">{{category.name}} </h4>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+          
+          
+        </div>
+        
+      <hr>
+    </div>
+
+   <!-- Categories Ends -->
+
+ 
+
+    
+
+ 
+
+   
+
+
+
+
+
+ 
+</body>
+</html>
+
+{% endblock content %}
