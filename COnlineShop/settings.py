@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-8d^)ke7z8e7hi1dmz84t-6pe3qy#@63o_#64+q+zvs=*tole9j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['nkonnlineshop.com', 'localhost', '127.0.0.1']
+
 
 import django_heroku
 django_heroku.settings(locals())
